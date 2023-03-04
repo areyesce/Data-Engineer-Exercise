@@ -4,4 +4,4 @@ MissionWired Data Engineer Exercise
 
 # install
 
-pip
+pip3 install pandas
