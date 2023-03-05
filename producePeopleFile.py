@@ -43,7 +43,7 @@ cons_email_id_list = chapter_id_1_rows['cons_email_id'].to_list()
 # print(chapter_id_1_rows['cons_email_id'].value_counts()) # unique
 
 """ get rows from const emails df that are in cons_email_id_list and are primary email """
-# 173990/275484 were is_primary
+""" 173990/275484 were is_primary """
 const_emails_primary = const_emails[(const_emails.cons_email_id.isin(cons_email_id_list)) & (const_emails.is_primary == 1)]
 
 # print(const_emails_primary.info())
@@ -55,24 +55,43 @@ const_emails_primary_sorted = const_emails_primary.sort_values(by='cons_email_id
 print(const_emails_primary_sorted.info())
 print(const_emails_primary_sorted.head(10))
 
-""" save list of cons_email_id values """
+""" save list of cons_email_id values MIGHT NOT NEED THESE """
 cons_email_id_list_from_primary = const_emails_primary_sorted['cons_email_id'].to_list()
 # print(cons_email_id_list_from_primary)
+
+cons_email_id_set = set(cons_email_id_list_from_primary)
+# print("Set: ",cons_email_id_set)
 
 isunsub_df = const_sub_status[const_sub_status.cons_email_id.isin(cons_email_id_list_from_primary)]
 # print(isunsub_df.info())
 # print(isunsub_df.head(10))
 
 """
-NOTE: df sizes # entries do not match, may need to delete duplicates
+NOTE: df sizes # entries do not match, after drop duplicates remains 134259 entries
 """
 isunsub_df_sorted = isunsub_df.sort_values(by='cons_email_id')
 isunsub_df_sorted.drop_duplicates(subset='cons_email_id',keep=False, inplace=True)
-print(isunsub_df_sorted.info()) # 134259 entries
-print(isunsub_df_sorted.head(10))
+# print(isunsub_df_sorted.info()) # 134259 entries
+# print(isunsub_df_sorted.head(10))
+
+""" drop all columns except cons_email_id and isunsub to perform a left outer join 
+to const_emails_primary_sorted['cons_email_id','email'] to keep all primary emails 
+even if no isunsub status """
+isunsub_by_cons_email_id = isunsub_df_sorted.drop(['cons_email_chapter_subscription_id','chapter_id','unsub_dt','modified_dt'], axis=1)
+# print(isunsub_by_cons_email_id.info())
+# print(isunsub_by_cons_email_id.head(10))
 
 
 """ sort by cons_email_id before joining"""
+
+# test_None_col = [None,None,1]
+# test_df = pd.DataFrame({"NoneTest":test_None_col})
+# print(test)
+
+emails_by_cons_email_id = const_emails_primary_sorted[['cons_email_id','email','cons_id']]
+output = pd.merge(emails_by_cons_email_id, isunsub_by_cons_email_id, on='cons_email_id', how='left')
+print(output.info())
+print(output.head(10))
 
 
 
