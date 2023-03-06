@@ -52,8 +52,8 @@ const_emails_primary = const_emails[(const_emails.cons_email_id.isin(cons_email_
 """ from here could choose to just drop columns and then merge from third file """
 """ sort primary list by cons_email_id """
 const_emails_primary_sorted = const_emails_primary.sort_values(by='cons_email_id')
-print(const_emails_primary_sorted.info())
-print(const_emails_primary_sorted.head(10))
+# print(const_emails_primary_sorted.info())
+# print(const_emails_primary_sorted.head(10))
 
 """ save list of cons_email_id values MIGHT NOT NEED THESE """
 cons_email_id_list_from_primary = const_emails_primary_sorted['cons_email_id'].to_list()
@@ -90,8 +90,23 @@ isunsub_by_cons_email_id = isunsub_df_sorted.drop(['cons_email_chapter_subscript
 
 emails_by_cons_email_id = const_emails_primary_sorted[['cons_email_id','email','cons_id']]
 output = pd.merge(emails_by_cons_email_id, isunsub_by_cons_email_id, on='cons_email_id', how='left')
-print(output.info())
-print(output.head(10))
+# print(output.info())
+# print(output.head(10))
+
+""" source, person created and updated info drawn from Constituent Information dataset 
+    match to rows in output df (derived by subset of entries with primary email) by cons_id """
+
+""" create subset of Constituent Info with source, create_dt, and modified_dt columns """
+const_info_sub = const_info[['cons_id','source','create_dt','modified_dt']]
+print(const_info_sub.info())
+print(const_info_sub.head(10))
+
+""" use const_info_sub to perform a left outer join to output df, 
+    which is sorted by primary emails; join on cons_id """
+
+final_output = pd.merge(output,const_info_sub, on='cons_id', how='left')
+print(final_output.info())
+print(final_output.head(10))
 
 
 
