@@ -16,7 +16,7 @@ The following documentation describes how to run this app locally. First install
 
 ## Task:
 
-##### 1) Produce a “people” file with the following schema. Save it as a CSV with a header line to the working directory.
+#### 1) Produce a “people” file with the following schema. Save it as a CSV with a header line to the working directory.
 
 
 | Column | Type | Description |
@@ -27,7 +27,7 @@ The following documentation describes how to run this app locally. First install
 | created_dt | datetime | Person creation datetime |
 | updated_dt | datetime | Person updated datetime |
 
-##### 2) Use the output of #1 to produce an “acquisition_facts” file with the following schema that aggregates stats about when people in the dataset were acquired. Save it to the working directory.
+#### 2) Use the output of #1 to produce an “acquisition_facts” file with the following schema that aggregates stats about when people in the dataset were acquired. Save it to the working directory.
 
 
 | Column | Type | Description |
