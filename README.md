@@ -21,12 +21,15 @@ Produce a “people” file with the following schema. Save it as a CSV with a h
 
 | Column | Type | Description |
 | -------| -----| ------ |
-email
-string
-Primary email address
-code
-string
-Source code
+| email | string| Primary email address |
+| code | string| Source code |
+| code | string| Source code |
+
+
+
+
+
+
 is_unsub
 boolean
 Is the primary email address unsubscribed?
