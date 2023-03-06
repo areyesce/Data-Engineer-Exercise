@@ -15,7 +15,7 @@ The following documentation describes how to run this app locally. First install
   * creates 'acquisition_facts.csv'; can only execute this line after creating 'people.csv' in previous step
 
 
-## Tasks:
+## Program outputs:
 
 #### 1) Produce a “people” file with the following schema. Save it as a CSV with a header line to the working directory.
 
