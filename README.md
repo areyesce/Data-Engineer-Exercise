@@ -1,7 +1,6 @@
-# Data-Engineer-Exercise
-MissionWired Data Engineer Exercise
+# MissionWired Data-Engineer-Exercise
 
-Draft documentation describing how a reviewer can run your app locally. Be sure to include steps like installing dependencies or other “pre-flight” configurations necessary for your code to run.
+The following documentation describes how to run this app locally. First install dependencies, then use terminal to execute python scripts.
 
 
 ## Install the following dependencies: 
