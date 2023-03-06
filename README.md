@@ -1,4 +1,4 @@
-# MissionWired Data-Engineer-Exercise
+# Data-Engineer-Exercise
 
 The following documentation describes how to run this app locally. First install dependencies, then use terminal to execute python scripts.
 
