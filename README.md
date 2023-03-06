@@ -23,20 +23,22 @@ Produce a “people” file with the following schema. Save it as a CSV with a h
 | -------| -----| ------ |
 | email | string| Primary email address |
 | code | string| Source code |
-| code | string| Source code |
+| is_unsub | boolean| Is the primary email address unsubscribed? |
+| created_dt | datetime | Person creation datetime |
+| updated_dt | datetime | Person updated datetime |
 
 
 
 
 
 
-is_unsub
-boolean
-Is the primary email address unsubscribed?
-created_dt
-datetime
-Person creation datetime
-updated_dt
-datetime
-Person updated datetime
+
+
+
+
+
+
+
+
+
 
