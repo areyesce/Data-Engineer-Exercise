@@ -22,19 +22,13 @@ const_sub_status = pd.read_csv("https://als-hiring.s3.amazonaws.com/fake_data/20
 
 """
 Produce a “people” file with the following schema. 
-TODO: Save it as a CSV with a header line to the working directory.
 * We only care about subscription statuses where chapter_id is 1. *
 """
 # total number of entries where chapter_id is 1, 275484/350000
-# print(len(const_sub_status[const_sub_status['chapter_id']==1]))
 
 """df with entries where chapter_id is 1"""
 chapter_id_1_rows = const_sub_status.loc[const_sub_status['chapter_id'] == 1]
-"""TODO: may need to reset index"""
 # print(chapter_id_1_rows.info())
-# print(chapter_id_1_rows.head(10))
-
-"""TODO: ADD HEADER TO CSV CREATED"""
 
 """ save list of cons_email_id values """
 cons_email_id_list = chapter_id_1_rows['cons_email_id'].to_list()
@@ -49,7 +43,6 @@ const_emails_primary = const_emails[(const_emails.cons_email_id.isin(cons_email_
 # print(const_emails_primary.info())
 # print(const_emails_primary.head(10))
 
-""" from here could choose to just drop columns and then merge from third file """
 """ sort primary list by cons_email_id """
 const_emails_primary_sorted = const_emails_primary.sort_values(by='cons_email_id')
 # print(const_emails_primary_sorted.info())
