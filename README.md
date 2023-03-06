@@ -8,7 +8,7 @@ Draft documentation describing how a reviewer can run your app locally. Be sure 
 * install python3 
 * pip3 install pandas
 
-## Run app locally
+## Run app locally, in terminal type:
 * python3 producePeopleFile.py
   * creates 'people.csv' file
 * python3 produceAcquisitionFactsFile.py
