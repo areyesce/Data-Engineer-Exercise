@@ -98,15 +98,30 @@ output = pd.merge(emails_by_cons_email_id, isunsub_by_cons_email_id, on='cons_em
 
 """ create subset of Constituent Info with source, create_dt, and modified_dt columns """
 const_info_sub = const_info[['cons_id','source','create_dt','modified_dt']]
-print(const_info_sub.info())
-print(const_info_sub.head(10))
+# print(const_info_sub.info())
+# print(const_info_sub.head(10))
 
 """ use const_info_sub to perform a left outer join to output df, 
     which is sorted by primary emails; join on cons_id """
 
 final_output = pd.merge(output,const_info_sub, on='cons_id', how='left')
-print(final_output.info())
-print(final_output.head(10))
+# print(final_output.info())
+# print(final_output.head(10))
+
+"""drop cons_email_id and cons_id columns before saving to csv file """
+final_output_dropped_ids = final_output[['email','source','isunsub','create_dt','modified_dt']]
+# print(final_output_dropped_ids.info())
+# print(final_output_dropped_ids.head(10))
+
+headerList = ['email','code','is_unsub','created_dt','updated_dt']
+
+final_output_dropped_ids.to_csv("people.csv", header=headerList, index=False)
+
+view_file = pd.read_csv("people.csv")
+
+print(view_file)
+
+
 
 
 
