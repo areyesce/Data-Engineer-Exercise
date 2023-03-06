@@ -3,18 +3,19 @@
 The following documentation describes how to run this app locally. First install dependencies, then use terminal to execute python scripts.
 
 
-## Install the following dependencies: 
+## Install the following dependencies
 * install python3 
 * pip3 install pandas
 
-## Run app locally, in terminal type:
+## Run app locally
+#### In a terminal inside the working directory type:
 * python3 producePeopleFile.py
   * creates 'people.csv' file
 * python3 produceAcquisitionFactsFile.py
   * creates 'acquisition_facts.csv'; can only execute this line after creating 'people.csv' in previous step
 
 
-## Task:
+## Tasks:
 
 #### 1) Produce a “people” file with the following schema. Save it as a CSV with a header line to the working directory.
 
